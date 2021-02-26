@@ -3,7 +3,7 @@
         <div class="row product-page-main card-body">
             <div class="col-xl-4">
                 <section>
-                    <ks-carousel [id]="100" [images]="imagesRect" [dotsConfig]="{visible: false}"
+                    <ks-carousel *ngIf="imagesRect" [id]="100" [images]="imagesRect" [dotsConfig]="{visible: false}"
                         [carouselConfig]="{maxHeight: '600px', keyboardEnable: true}"
                         [previewConfig]="{maxHeight: '125px'}">
                     </ks-carousel>
@@ -11,22 +11,25 @@
             </div>
             <div class="col-xl-8">
                 <div class="product-page-details product-right mb-0">
-                    <h2>WOMEN PINK SHIRT</h2>
+                    <h2>{{ item.name }}</h2>
                     <ngb-rating [rate]="3" class="rating-size-product"></ngb-rating>
                     <hr>
                     <h6 class="product-title">product details</h6>
-                    <p class="mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                        doloremque
-                        laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto
-                        beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>
+                    <p class="mb-0">{{item.description}}</p>
                     <div class="product-price digits mt-2">
-                        <h3>$26.00 <del>$350.00</del></h3>
+                        <h3>{{item.price["salePrice"]}} <del>{{item.price['price']}}</del></h3>
                     </div>
-                    <ul class="color-variant">
-                        <li class="bg-light0"></li>
-                        <li class="bg-light1"></li>
-                        <li class="bg-light2"></li>
+                    <!-- <ul class="color-variant" *ngIf="item.availableColors !=''"> 
+                        <li [class]="color" *ngFor="let color of getColorList(item.availableColors)" [ngStyle]="{'background-color': color}"
+                          (click)="ChangeVariants(color, item)">
+                        </li>
+                    </ul> -->
+                    <ul class="color-variant" *ngIf="productVariantList.length > 0"> 
+                        <li [class]="color" *ngFor="let color of avialableColorList" [ngStyle]="{'background-color': color}"
+                          (click)="ChangeVariants(color, item)">
+                        </li>
                     </ul>
+                   
                     <hr>
                     <h6 class="product-title size-text">select size
                         <span class="pull-right">

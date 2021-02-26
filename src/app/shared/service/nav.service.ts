@@ -42,6 +42,7 @@ export class NavService {
 		},
 		{
 			title: 'Products', icon: 'box', type: 'sub', active: false, children: [
+				{ path: '/products/attribute', title: 'Attribute', type: 'link' },
 				{
 					title: 'Physical', type: 'sub', children: [
 						{ path: '/products/physical/category', title: 'Category', type: 'link' },

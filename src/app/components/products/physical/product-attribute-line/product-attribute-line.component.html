@@ -1,0 +1,32 @@
+<form>
+    <div class="form-row">
+        <div class="col">
+            <label for="name">Value</label>
+            <input type="text" name="value" id="value" class="form-control" [(ngModel)]="attributeLine.value">                           
+        </div>
+        <div class="col">
+            <label for="parent" >Color</label>
+            <input type="text" name="value" id="value" class="form-control" *ngIf="displyType=='color'" [(ngModel)]="attributeLine.color">                                                          
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-primary" (click)="addValue()">Add Value</button>
+        </div>
+    </div>
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Vaue</th>
+          <th scope="col" *ngIf="displyType=='color'">color</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let line of attributeLineList" (click)="selectLine(line)">
+            <td>{{ line }}</td>
+            <!-- <td *ngIf="displyType=='color'">{{ line.color }}</td>                         -->
+            <td><button type="button" class="btn btn-link" (click)="deleteLine(attributeLineList.indexOf(line))">Delete</button></td>
+        </tr>        
+    </tbody>
+</table>

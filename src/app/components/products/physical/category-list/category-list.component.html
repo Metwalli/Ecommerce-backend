@@ -1,0 +1,19 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Key</th>
+          <th scope="col">Name</th>
+          <th scope="col">Parent</th>
+          <th scope="col">Action</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let cat of categoryList | async" (click)="selectCategory(cat)">
+            <th scope="row">{{ cat.id }}</th>            
+            <td>{{ cat.name }}</td>
+            <td>{{ cat.parent }}</td>                        
+            <td><button type="button" class="btn btn-link" (click)="deleteCategory(cat.id)">Delete</button></td>
+        </tr>        
+    </tbody>
+</table>

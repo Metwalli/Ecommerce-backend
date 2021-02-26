@@ -7,6 +7,12 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 
+import { ImageUploaderModule } from './image-uploader/image-uploader.module';
+
+// import { ExpansionPanelModule } from './shared/components/expansion-panel/expansion-panel.module';
+// export * from './shared/components/expansion-panel/expansion-panel.module';
+
+
 import { DashboardModule } from './components/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { ProductsModule } from './components/products/products.module';
@@ -47,7 +53,9 @@ import { AuthModule } from './components/auth/auth.module';
     MenusModule,
     UsersModule,
 
-    CoreModule,   
+    CoreModule,  
+    // ExpansionPanelModule 
+    ImageUploaderModule
     
   ],
   providers: [],

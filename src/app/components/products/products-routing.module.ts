@@ -9,11 +9,20 @@ import { DigitalSubCategoryComponent } from './digital/digital-sub-category/digi
 import { DigitalListComponent } from './digital/digital-list/digital-list.component';
 import { DigitalAddComponent } from './digital/digital-add/digital-add.component';
 import { ProductDetailComponent } from './physical/product-detail/product-detail.component';
+import { ProductAttributeComponent } from './physical/product-attribute/product-attribute.component';
 
 const routes: Routes = [
   {
     path: '',
     children: [
+      {
+        path: 'attribute',
+        component: ProductAttributeComponent,
+        data: {
+          title: "Add Attribute",
+          breadcrumb: "Add Attribute"
+        }
+      },
       {
         path: 'physical/category',
         component: CategoryComponent,
@@ -31,12 +40,16 @@ const routes: Routes = [
         }
       },
       {
-        path: 'physical/product-list',
-        component: ProductListComponent,
+        path: 'physical/product-list',        
         data: {
           title: "Product List",
           breadcrumb: "Product List"
-        }
+        },
+        children:[   
+          { path: '', component: ProductListComponent },                               
+          { path: 'new-product', component: AddProductComponent },
+          { path: ':id', component: ProductDetailComponent }                            
+        ]          
       },
       {
         path: 'physical/product-detail',
@@ -53,6 +66,10 @@ const routes: Routes = [
           title: "Add Products",
           breadcrumb: "Add Product"
         }
+      },
+      {
+        path: 'physical/product-detail/:id',
+        component: ProductDetailComponent
       },
       {
         path: 'digital/digital-category',

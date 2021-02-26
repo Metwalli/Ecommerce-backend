@@ -6,6 +6,7 @@ import { CKEditorModule } from 'ngx-ckeditor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { SharedModule } from '../../shared/shared.module'
 import { ProductsRoutingModule } from './products-routing.module';
 import { CategoryComponent } from './physical/category/category.component';
 import { SubCategoryComponent } from './physical/sub-category/sub-category.component';
@@ -23,12 +24,18 @@ import 'mousetrap';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
+
+import { ImageUploaderModule } from '../../image-uploader/image-uploader.module';
+
 import { ProductVariantComponent } from './physical/product-variant/product-variant.component';
 import { ProductFacetComponent } from './physical/product-facet/product-facet.component';
 import { ProductPriceComponent } from './physical/product-price/product-price.component';
 import { ProductReviewComponent } from './physical/product-review/product-review.component';
 import { ProductSummaryComponent } from './physical/product-summary/product-summary.component';
 import { ProductAttributeComponent } from './physical/product-attribute/product-attribute.component';
+import { CategoryListComponent } from './physical/category-list/category-list.component';
+import { ShippingComponent } from './physical/shipping/shipping.component';
+import { ProductAttributeLineComponent } from './physical/product-attribute-line/product-attribute-line.component';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
@@ -38,7 +45,26 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
 
 
 @NgModule({
-  declarations: [CategoryComponent, SubCategoryComponent, ProductListComponent, AddProductComponent, DigitalCategoryComponent, DigitalSubCategoryComponent, DigitalListComponent, DigitalAddComponent, ProductDetailComponent, PhysicalComponent, ProductVariantComponent, ProductFacetComponent, ProductPriceComponent, ProductReviewComponent, ProductSummaryComponent, ProductAttributeComponent],
+  declarations: [
+    CategoryComponent, 
+    SubCategoryComponent, 
+    ProductListComponent, 
+    AddProductComponent, 
+    DigitalCategoryComponent, 
+    DigitalSubCategoryComponent, 
+    DigitalListComponent, 
+    DigitalAddComponent, 
+    ProductDetailComponent, 
+    ProductVariantComponent, 
+    ProductFacetComponent, 
+    ProductPriceComponent, 
+    ProductReviewComponent, 
+    ProductSummaryComponent, 
+    ProductAttributeComponent, 
+    CategoryListComponent, 
+    ShippingComponent, 
+    ProductAttributeLineComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -48,7 +74,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     Ng2SmartTableModule,
     NgbModule,
     DropzoneModule,
-    GalleryModule.forRoot()
+    ImageUploaderModule,
+    SharedModule,
+    GalleryModule.forRoot(),
+
   ],
   providers: [
     {

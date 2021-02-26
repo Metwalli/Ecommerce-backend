@@ -1,57 +1,34 @@
+import { ProductAttribute } from './product-attribute.model';
+import { ProductVariant } from './product-variant.model';
+import { ProductPrice } from './product-price.model';
+import { Shipping } from './shipping.model';
+import { Image } from './image.model';
+
 export class Item {
-    id: string;
-    $key: string;
+    id: string = "";
+    
+    name: string ="";
     description: [
         {
             lang: string,
             val: string;
         }
     ];
-    name: string;
-    category: string;
-    brand: {
-        id: string;
-        name: string;
-        img: string;
-    }
-    assets: {
-        imgs: [
-            {               
-                height: number;
-                width: number;
-                src: string;
-            }
-        ]
-    }
-    shipping: {
-        dimensions: {
-            height: number;
-            width: number;
-            length: number;
-        },
-        weight: number;
-    }
-    specs: [
-        {
-            name: string;
-            value: string;
-        }
-    ]
-    attrs: [
-        {
-            name: string;
-            value: string;
-        }
-    ]
-    variants: {
-        count: number;
-        attrs: [
-            {
-                name: string; // color, size, etc.
-                dispType: string; // combobox, image, button, etc.
-            }
-        ]        
-    }    
+    type: string;
+    collection: string[]=[];
+    category: string[]=[];
+    brand: string;
+    images: any[]=[]; //Image[];
+    attributes: string[]=[];
+    shipping: any={}; // Shipping = new Shipping();
+    specs: any[];
+    price: any={}; // ProductPrice = new ProductPrice();
+    sale: true;
+    new: true;
+    tags: any[]=[];
+    variants: any[]=[]; // ProductVariant[];
+    hasVariants: boolean= false;
+    availableColors: string;
     lastUpdated: Date;
     sku: number;    
     barcode: number;

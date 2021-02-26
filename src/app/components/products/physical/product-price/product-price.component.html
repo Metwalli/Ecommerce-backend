@@ -1,1 +1,14 @@
-<p>product-price works!</p>
+<div class="col">
+    <label for="price">Price</label>
+    <input type="number" name="price" id="price" class="form-control" [(ngModel)]="productPrice.price">
+</div>
+<div class="col">
+    <label for="salePrice">Sale Price</label>
+    <input type="number" name="salePrice" id="salePrice" class="form-control" [(ngModel)]="productPrice.salePrice">
+</div>
+<div class="col">
+    <label for="saleEndDate">Sale End Date</label>
+    <input type="date" name="saleEndDate" id="saleEndDate" class="form-control" [(ngModel)]="productPrice.saleEndDate">
+</div>
+
+

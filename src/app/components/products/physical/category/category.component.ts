@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { categoryDB } from '../../../../shared/tables/category';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+
+import { ProductService } from '../../../../core/services/product.service';
+import { Category } from '../../../../shared/models/category.model';
 
 @Component({
   selector: 'app-category',
@@ -8,57 +12,40 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  public categories = [];
   public closeResult: string;
-  public categories = []
-
-  constructor(private modalService: NgbModal) {
+  public categoryList: Observable<any[]>;
+  category: Category = new Category();
+  
+  constructor(private ps :ProductService, private modalService: NgbModal) {
+    this.categoryList = ps.getCategoryList();
     this.categories = categoryDB.category;
   }
 
-  open(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
+  addCategory() {
+    if (this.category.id == ""){
+      this.category.id = this.ps.addCategory(this.category);
+      this.category = new Category();
     }
+    else {
+      this.ps.updateCategory(this.category);
+      this.category = new Category();
+    }
+    
   }
 
-
-  public settings = {
-    actions: {
-      position: 'right'
-    },
-    columns: {
-      img: {
-        title: 'Image',
-        type: 'html',
-      },
-      product_name: {
-        title: 'Name'
-      },
-      price: {
-        title: 'Price'
-      },
-      status: {
-        title: 'Status',
-        type: 'html',
-      },
-      category: {
-        title: 'Category',
-      }
-    },
-  };
-
+  onParentSelect(event: any){
+    if (event.target.value != "none"){
+      this.category.parent = event.target.value;
+    }    
+  }
+  onCategorySelect(cat: Category){
+    this.category = cat;
+  }
+  
+ 
   ngOnInit() {
+    
   }
 
 }

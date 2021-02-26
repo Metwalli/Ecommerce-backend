@@ -1,1 +1,72 @@
-<p>product-variant works!</p>
+<div class="col">
+    <label for="height">Name</label>
+    <input type="text" name="name" id="name" class="form-control" [(ngModel)]="variant.name">
+</div>
+<div class="col">
+    <label for="sku">SKU</label>
+    <input type="text" name="sku" id="sku" class="form-control" [(ngModel)]="variant.sku">
+</div>
+<div class="col">
+    <label for="sku">Color</label>
+    <input type="text" name="color" id="color" class="form-control" [(ngModel)]="variant.color">
+</div>
+<div class="col">
+    <label for="sku">Size</label>
+    <input type="text" name="size" id="size" class="form-control" [(ngModel)]="variant.size">
+</div>
+<div>
+    <button class="btn btn-link" (click)="openModal('custom-modal-1')">Select Image</button>
+</div>
+<div class="col-sm-2 col-4">
+    <img *ngIf="variant.img !=''" [src]="variant.img" class="rounded mx-auto d-block img-thumbnail" alt="...">
+</div>
+<jw-modal id="custom-modal-1">
+    <h1>Select Image</h1>
+    <div *ngFor="let img of uploadList" class="col-sm-2 col-4">
+        <img *ngIf="img.url !=''" [src]="img.url" class="rounded mx-auto d-block img-thumbnail" (click)="selectImage(img)" alt="...">
+    </div>
+    <button class="btn btn-link" (click)="closeModal('custom-modal-1');">Close</button>
+</jw-modal>
+
+<div class="form-group row">
+    <div class="col-sm-2">Price</div>
+    <div class="col-sm-10">
+         <product-price [productPrice]="variantPrice"></product-price>
+    </div>
+ </div>
+ 
+ <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col">Attribute</th>
+          <th scope="col">Value</th> 
+          <th scope="col">Action</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr>
+            <td>
+                <select class="form-control" name="attribute" [(ngModel)]="name" (change)="onAttributeSelect($event)">
+                    <option *ngFor="let att of itemAttributes" [value]="att.name">{{ att.name }}</option>
+                </select>                                                            
+            </td>
+            <td>      
+                <input type="text" name="value" id="value" class="form-control" [(ngModel)]="value">          
+                <!-- <select class="form-control" name="attribute" [(ngModel)]="value" (change)="onValueSelect($event)">
+                    <option *ngFor="let v of attribute.attributeLines" [value]="v">{{ v }}</option>
+                </select>                                                             -->
+            </td>
+            <td>
+                <button type="button" class="btn primary" (click)="addAttribute()">Add</button>                    
+            </td>
+        </tr>
+        <tr *ngFor="let att of variant.attrs">
+            <td>{{ att.name }}</td>
+            <td>{{ att.value }}</td>                        
+            <td><button type="button" class="btn btn-link" (click)="deleteAttribute(att.id)">Delete</button></td>
+        </tr>        
+    </tbody>
+</table>
+
+ 

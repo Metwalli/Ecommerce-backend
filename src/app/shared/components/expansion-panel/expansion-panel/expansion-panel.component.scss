@@ -1,0 +1,94 @@
+     *, ::after, ::before {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit;
+        }
+
+        ion-row, ion-col {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div.panel{
+            max-width: 100%;            
+            margin-top: 10px;
+            // margin-top: calc(5% - 0px);
+        }
+        details{            
+            background:#fff;
+            font-size:16px;
+            border-bottom:1px solid #e0e0e0;
+              box-shadow:0 0 2px rgba(0,0,0,0.12),0 2px 4px rgba(0,0,0,0.24);
+            display:flex; }
+
+        details div.content{
+            padding:0px 24px 24px 24px;
+        }
+
+        details[open]{
+            margin-top:10px;
+            margin-bottom:10px;
+            border:none;
+            border-radius: 2px;
+
+
+        }
+        details[open]:first-child{
+            margin-top:10px;
+            margin-bottom:10px;
+            border:none;
+        }
+        details[open]:last-child{
+            margin-top:10px;
+            margin-bottom:10px;
+            border:none;
+        }
+
+        summary{
+            outline:none;
+            cursor: pointer;
+            padding: 0 24px;
+            min-height: 40px;
+            color:#212121;
+            position: relative;
+            font-size: 15px;
+            border-bottom:1px solid #e0e0e0;            
+        }
+        summary:hover{
+            background: #ffe4c4;
+        }
+
+        details[open] summary:hover{
+            background:none;
+        }
+        summary ul {
+            padding-left: 0;
+            list-style: none;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+        summary ul li{
+             flex: 1 100%;
+             flex-flow: row wrap;
+        }
+        span{
+              display: block;
+              font-size: 15px;
+              margin-top: 6px;
+              opacity: .75;
+              text-align: left;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+              
+      
+        .titleValue{ color: #757575; }  
+         time{ color: #757575; opacity: .75; }  
+        .list-unstyled { margin-top:15px; padding-left: 0; list-style: none;}
+        .list-unstyled li{ margin-bottom:6px; }
+
+        .footer-line{
+            width: 100%; 
+            margin: 10px 0;
+        }

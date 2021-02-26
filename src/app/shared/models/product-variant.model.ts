@@ -1,20 +1,11 @@
+import { ProductAttribute } from './product-attribute.model';
 export class ProductVariant {
-    id: string; //sku
+    sku: string; //sku
     name: string;
-    itemId: string;
-    assets: {
-        imgs: [
-            {               
-                height: number;
-                width: number;
-                src: string;
-            }
-        ]
-    }
-    attrs: [
-        {
-            name: string;
-            value: string;
-        }
-    ]    
+    itemId: string;  
+    price: number;  
+    img: string;
+    color: string;
+    size: string;// if the product don't has size, size attribute doesn't show in the component
+    attrs: any[]=[]; // ProductAttribute[];    
 }
