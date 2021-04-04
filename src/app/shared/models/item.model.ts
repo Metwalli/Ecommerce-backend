@@ -25,7 +25,7 @@ export class Item {
     price: any={}; // ProductPrice = new ProductPrice();
     sale: true;
     new: true;
-    tags: any[]=[];
+    tags: string[]=[];
     variants: any[]=[]; // ProductVariant[];
     hasVariants: boolean= false;
     availableColors: string;

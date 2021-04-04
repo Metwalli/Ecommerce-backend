@@ -7,12 +7,12 @@
                         <div class="lable-block"><span class="lable3" *ngIf="product.tag == 'new'">new</span> <span
                                 class="lable4" *ngIf="product.sale == 'on sale'">on sale</span></div>
                         <div class="front">
-                            <a href="javascript:void(0)"><img [src]="[product.images[0]['url']]"
-                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                            
+                                <img [src]="[product.images[0]['url']]" class="img-fluid blur-up lazyload bg-img" alt="">
                             <div class="product-hover">
                                 <ul>
                                     <li>
-                                        <button class="btn" type="button" data-original-title="" title="">
+                                        <button class="btn" type="button" data-original-title="" title="">                                            
                                             <i class="icon-pencil-alt" (click)="editeProduct(product)"></i>
                                         </button>
                                     </li>

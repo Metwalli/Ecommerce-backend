@@ -39,8 +39,8 @@ export class UploadService {
       // The file's download URL
       finalize( async() =>  {
         this.downloadURL = upload.url = await ref.getDownloadURL().toPromise();
-        upload.$key = this.afs.createId();
-        this.afs.collection('media_metadata').doc(upload.$key).set(Object.assign({}, {$key: upload.$key, downloadURL: upload.url, path, alt: upload.alt }));
+        upload.id = this.afs.createId();
+        this.afs.collection('media_metadata').doc(upload.id).set(Object.assign({}, {id: upload.id, url: upload.url, path, alt: upload.alt }));
       }),
     );
     return this.percentage, this.snapshot
@@ -51,7 +51,7 @@ export class UploadService {
   }
 
   deleteUpload(upload: Upload){
-    this.deleteFileData(upload.$key)
+    this.deleteFileData(upload.id)
     .then(()=>{
       this.deleteFileStorage(upload.name)
     })

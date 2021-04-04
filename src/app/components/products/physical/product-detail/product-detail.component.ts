@@ -67,7 +67,7 @@ export class ProductDetailComponent implements OnInit {
           .subscribe(vList => {
             this.productVariantList = vList;
             this.avialableColorList = this.getColorList();
-            debugger
+            // debugger
             this.imagesRect = this.getImages();
           });
         // for(let variant of this.productVariantList) {

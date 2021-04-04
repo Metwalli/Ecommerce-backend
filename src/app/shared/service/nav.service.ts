@@ -49,7 +49,7 @@ export class NavService {
 						{ path: '/products/physical/sub-category', title: 'Sub Category', type: 'link' },
 						{ path: '/products/physical/product-list', title: 'Product List', type: 'link' },
 						{ path: '/products/physical/product-detail', title: 'Product Detail', type: 'link' },
-						{ path: '/products/physical/add-product', title: 'Add Product', type: 'link' },
+						{ path: '/products/physical/product-list/new-product', title: 'Add Product', type: 'link' },
 					]
 				},
 				{
@@ -57,7 +57,7 @@ export class NavService {
 						{ path: '/products/digital/digital-category', title: 'Category', type: 'link' },
 						{ path: '/products/digital/digital-sub-category', title: 'Sub Category', type: 'link' },
 						{ path: '/products/digital/digital-product-list', title: 'Product List', type: 'link' },
-						{ path: '/products/digital/digital-add-product', title: 'Add Product', type: 'link' },
+						{ path: '/products/digital/digital-new-product', title: 'Add Product', type: 'link' },
 					]
 				},
 			]

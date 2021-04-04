@@ -64,17 +64,49 @@ export class ProductService {
     this.afs.collection<any>("category").doc(id).delete();
   }
 
-  addItem(data: any) {
+  addItem(data: any, variants: any[]) {
     const id = this.afs.createId();
     data.id = id;    
     this.itemsCollection.doc(id).set(Object.assign({}, data));
+    for(let v of variants){
+      v.itemId = data.id;
+      v.id = this.addVariant(v);
+      data.variants.push(v.id);
+    }
     return id
   }
   getItem(id: string): AngularFirestoreDocument<Item>{
     return this.afs.doc<Item>(`products/${id}`);
   }
-  updateItem(data: any){    
-    this.afs.collection<any>('products').doc(data.id).update(data);    
+  updateItem(data: Item, variants: any[]){
+    debugger
+    for(let v of data.variants){
+      this.deleteProductVariants(v);       
+    }
+            
+    
+    data.variants = [];
+    for(let v of variants ){
+      v.itemId = data.id;
+      let id = this.addVariant(v);
+      data.variants.push(id);
+    }    
+    this.afs.collection<any>('products').doc(data.id).update({
+      attributes: data.attributes,
+      barcode: data.barcode,
+      brand: data.brand,
+      category: data.category,
+      description: data.description,
+      haseVariants: data.hasVariants,
+      images: data.images,
+      name: data.name,
+      price: data.price,
+      shipping: data.shipping,
+      tags: data.tags,
+      type: data.type,
+      variants: data.variants
+
+    });    
   }
 
   addVariant(data: any){
@@ -82,7 +114,7 @@ export class ProductService {
     const id = this.afs.createId();
     data.id = id;
     this.afs.collection<any>('variants').doc(id).set(Object.assign({}, data));
-
+    return id
   }
   getProductVariantList(itemId: string | null){
     // this.itemIdFilter$.next(itemId);
@@ -101,6 +133,9 @@ export class ProductService {
 
     // this.afs.collection('variants').doc(id).set(Object.assign({}, data));
 
+  }
+  deleteProductVariants(vId: string){    
+      return this.afs.collection('variants').doc(vId).delete();        
   }
   addAttribute(data: any) {
     const id = this.afs.createId();

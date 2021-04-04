@@ -48,7 +48,7 @@ const routes: Routes = [
         children:[   
           { path: '', component: ProductListComponent },                               
           { path: 'new-product', component: AddProductComponent },
-          { path: ':id', component: ProductDetailComponent }                            
+          { path: ':id', component: AddProductComponent }                            
         ]          
       },
       {
@@ -60,7 +60,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'physical/add-product',
+        path: 'physical/product-list/new-product',
         component: AddProductComponent,
         data: {
           title: "Add Products",

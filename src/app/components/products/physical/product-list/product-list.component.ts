@@ -55,7 +55,7 @@ export class ProductListComponent implements OnInit {
     
     let link = ['/physical/product-list', "new-product"];
     this.router.navigate(link);
-}
+  }
   editeProduct(product: any){   
     this.ps.currentProduct = product;              
     let link = ['/physical/product-list', product.id];
